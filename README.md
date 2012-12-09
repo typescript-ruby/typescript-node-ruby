@@ -1,6 +1,6 @@
-# Typescript::Node::Ruby
+# Typescript::Node
 
-TODO: Write a gem description
+[![Build Status](https://secure.travis-ci.org/tkawachi/typescript-node-ruby.png?branch=master)](https://travis-ci.org/tkawachi/typescript-node-ruby)
 
 ## Installation
 
