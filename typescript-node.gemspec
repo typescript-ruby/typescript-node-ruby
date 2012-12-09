@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["tkawachi@gmail.com"]
   gem.description   = %q{TypeScript ruby interface using Node.js}
   gem.summary       = %q{TypeScript ruby interface using Node.js}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/tkawachi/typescript-node-ruby"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
