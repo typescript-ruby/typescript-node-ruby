@@ -15,5 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = TypeScript::Node::VERSION
 
-  gem.add_dependency 'typescript-src', '0.8.1.1'
+  gem.add_dependency 'typescript-src', '~> 0.8'
 end
