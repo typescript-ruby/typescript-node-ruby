@@ -3,6 +3,7 @@ require "tempfile"
 require "typescript-src"
 require "typescript-node/version"
 require "typescript-node/compile_result"
+require "open3"
 
 module TypeScript
   module Node
