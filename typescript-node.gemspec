@@ -14,6 +14,4 @@ Gem::Specification.new do |gem|
   gem.name          = "typescript-node"
   gem.require_paths = ["lib"]
   gem.version       = TypeScript::Node::VERSION
-
-  gem.add_dependency 'typescript-src', '~> 0.8'
 end

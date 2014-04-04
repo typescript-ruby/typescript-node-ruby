@@ -10,7 +10,7 @@ module TypeScript
 
       its(:exit_status) { should == 0 }
       it { should be_success }
-      its(:js) { should == "console.log(\"Hello TypeScript\");\r\n" }
+      its(:js) { should == "console.log(\"Hello TypeScript\");\n" }
       its(:stdout) { should == "" }
       its(:stderr) { should == "" }
     end
