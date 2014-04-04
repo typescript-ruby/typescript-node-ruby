@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'typescript-src', '~> 1.0' #path: '../typescript-src-ruby'
+
 group :development do
   gem "rake"
   gem "rspec"
