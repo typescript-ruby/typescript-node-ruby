@@ -25,16 +25,15 @@ require 'typescript-node'
 TypeScript::Node.check_node
 
 # compiles a TypeScript source file and returns TypeScript::Node::CompileResult
-result = TypeScript::Node.compile_file(file)
+result = TypeScript::Node.compile_file(file, '--target', 'ES5')
 result.success? # => true if succeeded
 result.js # => output JavaScript source code
 result.stdout # => what tsc(1) shows to stdout
 result.stderr # => what tsc(1) shows to stderr
 
 # compiles a TypeScript source code string and returns String
-js_source = TypeScript::Node.compile_file(ts_source)
+js_source = TypeScript::Node.compile_file(ts_source, '--target', 'ES5')
 ```
-
 
 ## Contributing
 

@@ -13,35 +13,42 @@ module TypeScript
         TypeScript::Src.version
       end
 
+
+      def tsc(*args)
+        cmd = [node, Src.tsc_path.to_s, *args]
+        Open3.popen3(*cmd) do |stdin, stdout, stderr, wait_thr|
+          stdin.close
+          [wait_thr.value, stdout.read, stderr.read]
+        end
+      end
+
       # Compile TypeScript source file.
       # @param [String] source_file TypeScript source file
       # @return [TypeScript::Node::CompileResult] compile result
-      def compile_file(source_file)
+      def compile_file(source_file, *tsc_options)
         Dir.mktmpdir do |output_dir|
           output_file = File.join(output_dir, "out.js")
-          cmd = [node, Src.tsc_path.to_s, "--out", output_file, source_file]
-          Open3.popen3(*cmd) do |stdin, stdout, stderr, wait_thr|
-            exit_status = wait_thr.value
-            output_js = File.exists?(output_file) ? File.read(output_file) : nil
-            CompileResult.new(
-                output_js,
-                exit_status,
-                stdout.read,
-                stderr.read
-            )
-          end
+          exit_status, stdout, stderr = tsc(*tsc_options, '--out', output_file, source_file)
+
+          output_js = File.exists?(output_file) ? File.read(output_file) : nil
+          CompileResult.new(
+              output_js,
+              exit_status,
+              stdout,
+              stderr,
+          )
         end
       end
 
       # Compile TypeScript to JavaScript.
       # @param [String] source TypeScript to be compiled
       # @return [String] Resulted JavaScript
-      def compile(source)
+      def compile(source, *tsc_options)
         js_file = Tempfile.new(["typescript-node", ".ts"])
         begin
           js_file.write(source)
           js_file.close
-          result = compile_file(js_file.path)
+          result = compile_file(js_file.path, *tsc_options)
           if result.success?
             result.js
           else
@@ -77,7 +84,7 @@ module TypeScript
       def check_node
         unless locate_executable(node)
           raise "typescript-node requires node command, but it's not found. Please install it. " +
-                    "Set TS_NODE environmental variable If you want to use node command in non-standard path."
+              "Set TS_NODE environmental variable If you want to use node command in non-standard path."
         end
       end
     end
