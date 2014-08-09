@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-group :development do
-  gem "rake"
-  gem "rspec"
+group :test do
+  gem 'test-unit'
 end
 
 # Specify your gem's dependencies in typescript-node-ruby.gemspec

@@ -1,6 +1,6 @@
 # Typescript::Node
 
-[![Build Status](https://secure.travis-ci.org/tkawachi/typescript-node-ruby.png?branch=master)](https://travis-ci.org/tkawachi/typescript-node-ruby)
+[![Build Status](https://secure.travis-ci.org/typescript-ruby/typescript-node-ruby.png?branch=master)](https://travis-ci.org/typescript-ruby/typescript-node-ruby)
 
 ## Installation
 

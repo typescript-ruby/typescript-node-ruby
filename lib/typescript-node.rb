@@ -16,7 +16,7 @@ module TypeScript
       def compile_file(source_file)
         Dir.mktmpdir do |output_dir|
           output_file = File.join(output_dir, "out.js")
-          cmd = [node, Src.tsc_path, "--out", output_file, source_file]
+          cmd = [node, Src.tsc_path.to_s, "--out", output_file, source_file]
           Open3.popen3(*cmd) do |stdin, stdout, stderr, wait_thr|
             exit_status = wait_thr.value
             output_js = File.exists?(output_file) ? File.read(output_file) : nil
