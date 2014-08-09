@@ -1,6 +1,6 @@
-# Typescript::Node
+# Typescript::Node [![Build Status](https://secure.travis-ci.org/typescript-ruby/typescript-node-ruby.png?branch=master)](https://travis-ci.org/typescript-ruby/typescript-node-ruby)
 
-[![Build Status](https://secure.travis-ci.org/typescript-ruby/typescript-node-ruby.png?branch=master)](https://travis-ci.org/typescript-ruby/typescript-node-ruby)
+TypeScript compiler in a gem.
 
 ## Installation
 
@@ -18,7 +18,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'typescript-node'
+
+# raises an error if node(1) isn't available
+TypeScript::Node.check_node
+
+# compiles a TypeScript source file and returns TypeScript::Node::CompileResult
+result = TypeScript::Node.compile_file(file)
+result.success? # => true if succeeded
+result.js # => output JavaScript source code
+result.stdout # => what tsc(1) shows to stdout
+result.stderr # => what tsc(1) shows to stderr
+
+# compiles a TypeScript source code string and returns String
+js_source = TypeScript::Node.compile_file(ts_source)
+```
+
 
 ## Contributing
 

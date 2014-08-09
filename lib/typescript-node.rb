@@ -7,8 +7,11 @@ require "open3"
 
 module TypeScript
   module Node
-
     class << self
+
+      def tsc_version
+        TypeScript::Src.version
+      end
 
       # Compile TypeScript source file.
       # @param [String] source_file TypeScript source file
@@ -72,7 +75,7 @@ module TypeScript
       end
 
       def check_node
-        unless locate_executable(self.node)
+        unless locate_executable(node)
           raise "typescript-node requires node command, but it's not found. Please install it. " +
                     "Set TS_NODE environmental variable If you want to use node command in non-standard path."
         end
