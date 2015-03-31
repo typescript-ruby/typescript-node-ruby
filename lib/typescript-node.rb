@@ -13,13 +13,9 @@ module TypeScript
         TypeScript::Src.version
       end
 
-
       def tsc(*args)
         cmd = [node, Src.tsc_path.to_s, *args]
-        Open3.popen3(*cmd) do |stdin, stdout, stderr, wait_thr|
-          stdin.close
-          [wait_thr.value, stdout.read, stderr.read]
-        end
+        Open3.capture3(*cmd)
       end
 
       # Compile TypeScript source file.
@@ -28,14 +24,14 @@ module TypeScript
       def compile_file(source_file, *tsc_options)
         Dir.mktmpdir do |output_dir|
           output_file = File.join(output_dir, "out.js")
-          exit_status, stdout, stderr = tsc(*tsc_options, '--out', output_file, source_file)
+          stdout, stderr, exit_status = tsc(*tsc_options, '--out', output_file, source_file)
 
           output_js = File.exists?(output_file) ? File.read(output_file) : nil
           CompileResult.new(
-              output_js,
-              exit_status,
-              stdout,
-              stderr,
+            output_js,
+            exit_status,
+            stdout,
+            stderr,
           )
         end
       end
