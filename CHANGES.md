@@ -1,3 +1,7 @@
+## v1.4.1 2015-07-06 22:36:25+0300
+
+* Added stdout to output when Typescript compilation error occurs
+
 ## v1.1.1 2015-04-19 15:40:00+0900
 
 * Use capture3 instead of popen3 to handle tsc I/O.

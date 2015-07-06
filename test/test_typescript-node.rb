@@ -28,8 +28,7 @@ class TestTypeScriptNode < Test::Unit::TestCase
 
     assert { subject.exit_status != 0 }
     assert { !subject.success? }
-    assert { subject.stdout == '' }
-    assert { subject.stderr != '' }
+    assert { subject.stdout != '' || subject.stderr != '' }
   end
 
   def test_compile_file_with_es5
