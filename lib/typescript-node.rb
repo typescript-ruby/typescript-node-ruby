@@ -26,7 +26,7 @@ module TypeScript
           output_file = File.join(output_dir, 'out.js')
           stdout, stderr, exit_status = tsc(*tsc_options, '--out', output_file, source_file)
 
-          output_js = File.exists?(output_file) ? File.read(output_file) : nil
+          output_js = File.exist?(output_file) ? File.read(output_file) : nil
           CompileResult.new(
               output_js,
               exit_status,
