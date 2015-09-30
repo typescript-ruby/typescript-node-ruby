@@ -1,3 +1,6 @@
+## v1.6.2 2015-09-30 12:14:00+0300
+* Updated typescript-src gem version to v1.6.2
+
 ## v1.4.1 2015-07-06 22:36:25+0300
 
 * Added stdout to output when Typescript compilation error occurs

@@ -1,5 +1,5 @@
 module TypeScript
   module Node
-    VERSION = '1.4.1'
+    VERSION = '1.6.2'
   end
 end
