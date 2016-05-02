@@ -39,8 +39,8 @@ module TypeScript
       # Compile TypeScript to JavaScript.
       # @param [String] source TypeScript to be compiled
       # @return [String] Resulted JavaScript
-      def compile(source, *tsc_options)
-        js_file = Tempfile.new(%w(typescript-node .ts))
+      def compile(source, extension, *tsc_options)
+        js_file = Tempfile.new(["typescript-node", extension])
         begin
           js_file.write(source)
           js_file.close
