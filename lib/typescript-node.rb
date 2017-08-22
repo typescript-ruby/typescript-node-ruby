@@ -23,8 +23,10 @@ module TypeScript
       # @return [TypeScript::Node::CompileResult] compile result
       def compile_file(source_file, *tsc_options)
         Dir.mktmpdir do |output_dir|
-          output_file = File.join(output_dir, 'out.js')
-          stdout, stderr, exit_status = tsc(*tsc_options, '--out', output_file, source_file)
+          #output_file = File.join(output_dir, 'out.js')
+          #stdout, stderr, exit_status = tsc(*tsc_options, '--out', output_file, source_file)
+          output_file = source_file.sub(/\.ts\z/, '.js')
+          stdout, stderr, exit_status = tsc(*tsc_options, source_file)
 
           output_js = File.exist?(output_file) ? File.read(output_file) : nil
           CompileResult.new(
